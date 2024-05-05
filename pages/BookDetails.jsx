@@ -19,12 +19,6 @@ export default function BookDetails({ route, navigation }) {
       fetchFavoriteStatus(passedBook .id)
   }, []);
 
-  /*useEffect(() => {
-    const { book } = route.params;
-    setBook(book);
-    fetchFavoriteStatus(book.id)
-  }, [])*/
-
   const onButtonToggle = () => {
     if(status === 'unchecked') {
       saveBook();
