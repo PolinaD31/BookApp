@@ -1,10 +1,13 @@
-import { View } from 'react-native';
-import { TextInput } from 'react-native-paper';
-import { styles } from '../../styles/styles';
+import { View } from "react-native";
+import { TextInput } from "react-native-paper";
+import { styles } from "../../styles/styles";
 
-
-export default function LoginInputForm({email, setEmail, password, setPassword}) {
-
+export default function LoginInputForm({
+  email,
+  setEmail,
+  password,
+  setPassword,
+}) {
   return (
     <View style={styles.inputContainer}>
       <TextInput
@@ -14,7 +17,7 @@ export default function LoginInputForm({email, setEmail, password, setPassword})
         onChangeText={setEmail}
         keyboardType="email-address"
         autoCapitalize="none"
-        mode='outlined'
+        mode="outlined"
       />
       <TextInput
         style={styles.input}
@@ -22,7 +25,7 @@ export default function LoginInputForm({email, setEmail, password, setPassword})
         value={password}
         onChangeText={setPassword}
         secureTextEntry={true}
-        mode='outlined'
+        mode="outlined"
       />
     </View>
   );

@@ -18,6 +18,5 @@ const database = getDatabase(app);
 const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 });
-console.log(auth)
 
 export { app, database, auth };

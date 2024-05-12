@@ -3,7 +3,7 @@ const getStartOfWeek = () => {
   const dayOfWeek = today.getDay();
   const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
   const startDate = new Date(today.setDate(diff));
-  return startDate.toISOString().split('T')[0];
+  return startDate.toISOString().split("T")[0];
 };
 
 const getEndOfWeek = (startDate) => {
@@ -11,17 +11,22 @@ const getEndOfWeek = (startDate) => {
   const endDate = new Date(startDate);
   endDate.setDate(startDateFormated.getDate() + 6);
   return endDate;
-}
+};
 
-const changeWeek = (direction, currentWeekStart, setCurrentWeekStart, setWeekEnd) => {
+const changeWeek = (
+  direction,
+  currentWeekStart,
+  setCurrentWeekStart,
+  setWeekEnd,
+) => {
   const newWeekStart = new Date(currentWeekStart);
-  if (direction === 'next') {
+  if (direction === "next") {
     newWeekStart.setDate(newWeekStart.getDate() + 7);
   } else {
     newWeekStart.setDate(newWeekStart.getDate() - 7);
   }
-  setCurrentWeekStart(newWeekStart.toISOString().split('T')[0]);
-  setWeekEnd(getEndOfWeek(newWeekStart).toISOString().split('T')[0])
+  setCurrentWeekStart(newWeekStart.toISOString().split("T")[0]);
+  setWeekEnd(getEndOfWeek(newWeekStart).toISOString().split("T")[0]);
 };
 
 const calculateWeeklyReading = (startDate, data) => {
@@ -31,7 +36,7 @@ const calculateWeeklyReading = (startDate, data) => {
   endDate.setDate(endDate.getDate() + 6);
 
   while (startDateCopy <= endDate) {
-    const dateFormated = startDateCopy.toISOString().split('T')[0];
+    const dateFormated = startDateCopy.toISOString().split("T")[0];
     weeklyReading.push(data[dateFormated] || 0);
     startDateCopy.setDate(startDateCopy.getDate() + 1);
   }
@@ -41,7 +46,17 @@ const calculateWeeklyReading = (startDate, data) => {
 
 const formatDate = (date) => {
   const dateFormated = new Date(date);
-  return dateFormated.getUTCDate() + " " + dateFormated.toLocaleString('default', { month: 'long' });
-}
+  return (
+    dateFormated.getUTCDate() +
+    " " +
+    dateFormated.toLocaleString("default", { month: "long" })
+  );
+};
 
-export { getStartOfWeek, changeWeek, calculateWeeklyReading, formatDate, getEndOfWeek};
+export {
+  getStartOfWeek,
+  changeWeek,
+  calculateWeeklyReading,
+  formatDate,
+  getEndOfWeek,
+};
