@@ -19,6 +19,8 @@ export default function Favorites({ navigation }) {
       if (data) {
         const favoriteBooksList = Object.values(data);
         setFavorites(favoriteBooksList);
+      } else {
+        setFavorites([]);
       }
     });
   };
