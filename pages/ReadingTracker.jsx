@@ -39,7 +39,7 @@ export default function ReadingTracker() {
     );
   };
 
-  useEffect(() => {
+  const getReadingData = () => {
     setIsLoading(true);
     onValue(
       ref(database, `readingData/${auth.currentUser.uid}`),
@@ -49,10 +49,15 @@ export default function ReadingTracker() {
           setReadingData(data);
           setWeeklyReading(calculateWeeklyReading(currentWeekStart, data));
           setIsLoading(false);
+        } else {
+          setIsLoading(false);
         }
       },
     );
+  }
 
+  useEffect(() => {
+    getReadingData();
     getReadingGoals();
   }, []);
 
